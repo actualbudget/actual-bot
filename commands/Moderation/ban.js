@@ -6,7 +6,7 @@ module.exports = {
         .setDescription("Ban a user from the discord server.")
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
         .addUserOption(option =>
-            option.setName("target")
+            option.setName("member")
                 .setDescription("User to be banned.")
                 .setRequired(true)
         )
@@ -18,7 +18,7 @@ module.exports = {
     async execute(interaction) {
         const { channel, options } = interaction;
 
-        const user = options.getUser("target");
+        const user = options.getUser("member");
         const reason = options.getString("reason") || "No reason provided.";
 
         const member = await interaction.guild.members.fetch(user.id);

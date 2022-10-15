@@ -1,3 +1,5 @@
+const config = require("../../config.json");
+
 module.exports = {
   name: "messageReactionRemove",
   async execute(reaction, user) {
@@ -6,30 +8,30 @@ module.exports = {
     if (user.bot) return;
     if (!reaction.message.guild) return;
 
-    // Contributer role
-    if (reaction.message.id == "1027831065139761164") {
+    // Contributor role
+    if (reaction.message.id == config.contributorRole) {
       if (reaction.emoji.name === "✅") {
         await reaction.message.guild.members.cache
           .get(user.id)
-          .roles.remove("1027828366474235984");
+          .roles.remove(config.contributorRole);
       }
     }
 
-    // Documentor role
-    if (reaction.message.id == "1027831134173802537") {
+    // Documenter role
+    if (reaction.message.id == config.documenterRole) {
       if (reaction.emoji.name === "✅") {
         await reaction.message.guild.members.cache
           .get(user.id)
-          .roles.remove("1027828648121729024");
+          .roles.remove(config.documenterRole);
       }
     }
 
     // Developer role
-    if (reaction.message.id == "1027831265711378452") {
+    if (reaction.message.id == config.developerRole) {
       if (reaction.emoji.name === "✅") {
         await reaction.message.guild.members.cache
           .get(user.id)
-          .roles.remove("1027828559970062336");
+          .roles.remove(config.developerRole);
       }
     }
   }

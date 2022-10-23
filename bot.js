@@ -13,6 +13,10 @@ const client = new Client({
 
 client.commands = new Collection();
 client.config = require('./config.json');
+
+/**
+ * @typedef {import("quick.db").QuickDB} QuickDB
+ */
 client.db = require('./db.js');
 
 client.login(client.config.token).then(() => {
